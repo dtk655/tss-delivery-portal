@@ -1,0 +1,987 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * Work-zone palette.
+ * Asphalt for the app frame, concrete for the workspace, TSS red for action and
+ * "you are here", sheeting yellow for highlights. The stone scale is remapped to
+ * cool concrete greys so every page that uses stone-* picks up the new neutrals.
+ */
+@theme {
+  --color-stone-50: #f6f7f8;
+  --color-stone-100: #eef0f1;
+  --color-stone-200: #e0e3e6;
+  --color-stone-300: #c9cfd4;
+  --color-stone-400: #98a0a8;
+  --color-stone-500: #646e78;
+  --color-stone-600: #4d5660;
+  --color-stone-700: #39414a;
+  --color-stone-800: #272d33;
+  --color-stone-900: #1b2025;
+  --color-stone-950: #15181b;
+
+  --color-canvas: #eceeef;
+  --color-asphalt: #1f2429;
+  --color-asphalt-2: #282e34;
+  --color-asphalt-3: #343b42;
+  --color-tss-red: #e10600;
+  --color-sheeting: #ffd100;
+
+  --font-display: "Overpass", var(--font-geist-sans, ui-sans-serif), ui-sans-serif, system-ui, sans-serif;
+
+  --shadow-sm: 0 1px 0 rgb(21 24 27 / 0.03), 0 1px 3px rgb(21 24 27 / 0.06);
+  --shadow-md: 0 2px 4px rgb(21 24 27 / 0.05), 0 8px 20px -6px rgb(21 24 27 / 0.12);
+  --shadow-lg: 0 4px 8px rgb(21 24 27 / 0.06), 0 22px 44px -12px rgb(21 24 27 / 0.24);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans, ui-sans-serif), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono, ui-monospace), ui-monospace, monospace;
+  --font-heading: var(--font-display);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.7);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+}
+
+:root {
+  --background: #eceeef;
+  --foreground: #15181b;
+  --card: #ffffff;
+  --card-foreground: #15181b;
+  --popover: #ffffff;
+  --popover-foreground: #15181b;
+  --primary: #1f2429;
+  --primary-foreground: #ffffff;
+  --secondary: #eef0f1;
+  --secondary-foreground: #1f2429;
+  --muted: #eef0f1;
+  --muted-foreground: #4d5660;
+  --accent: #eef0f1;
+  --accent-foreground: #1f2429;
+  --destructive: #b01820;
+  --border: #e0e3e6;
+  --input: #c9cfd4;
+  --ring: #e10600;
+  --chart-1: #e10600;
+  --chart-2: #ffd100;
+  --chart-3: #98a0a8;
+  --chart-4: #4d5660;
+  --chart-5: #1f2429;
+  --radius: 0.5rem;
+  --sidebar: #1f2429;
+  --sidebar-foreground: #d5dade;
+  --sidebar-primary: #e10600;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #2c3238;
+  --sidebar-accent-foreground: #ffffff;
+  --sidebar-border: #343b42;
+  --sidebar-ring: #ffd100;
+
+  --topbar-h: 3.5rem;
+  --rail-w: 16.5rem;
+  --ease-out: cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+html[data-rail="collapsed"] {
+  --rail-w: 4.5rem;
+}
+
+.dark {
+  --background: oklch(0.145 0 0);
+  --foreground: oklch(0.985 0 0);
+  --card: oklch(0.205 0 0);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.205 0 0);
+  --popover-foreground: oklch(0.985 0 0);
+  --primary: oklch(0.922 0 0);
+  --primary-foreground: oklch(0.205 0 0);
+  --secondary: oklch(0.269 0 0);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.269 0 0);
+  --muted-foreground: oklch(0.708 0 0);
+  --accent: oklch(0.269 0 0);
+  --accent-foreground: oklch(0.985 0 0);
+  --destructive: oklch(0.704 0.191 22.216);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.556 0 0);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  html {
+    @apply font-sans;
+    color-scheme: light;
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "cv11", "ss01";
+  }
+  ::selection {
+    background: color-mix(in srgb, var(--color-sheeting) 55%, transparent);
+    color: var(--color-stone-950);
+  }
+}
+
+/* ---------- Type: highway-sign face for headings and big figures ---------- */
+
+main h1 {
+  font-family: var(--font-display);
+  letter-spacing: -0.012em;
+  line-height: 1.05;
+}
+
+main h2.text-base,
+main h2.text-lg,
+main h2.text-xl,
+main h2.text-2xl {
+  font-family: var(--font-display);
+  letter-spacing: -0.005em;
+}
+
+main :is(.text-xl, .text-2xl, .text-3xl, .text-4xl, .text-5xl).tabular-nums,
+.figure {
+  font-family: var(--font-display);
+  font-variant-numeric: tabular-nums lining-nums;
+  letter-spacing: -0.02em;
+}
+
+/* ---------- Feel: fast color and press feedback ---------- */
+
+:where(a, button, summary, [data-slot="button"]) {
+  transition:
+    color 160ms var(--ease-out),
+    background-color 160ms var(--ease-out),
+    border-color 160ms var(--ease-out),
+    box-shadow 160ms var(--ease-out),
+    opacity 160ms var(--ease-out);
+}
+
+:where(button, [data-slot="button"]) {
+  transition-property: color, background-color, border-color, box-shadow, opacity, transform;
+}
+
+:where(button, [data-slot="button"]):active {
+  transform: scale(0.98);
+}
+
+:where(a, button, summary):focus-visible {
+  outline: 2px solid color-mix(in srgb, var(--color-tss-red) 60%, transparent);
+  outline-offset: 2px;
+}
+
+:where(input, select, textarea):not([data-slot]) {
+  transition: border-color 160ms var(--ease-out), box-shadow 160ms var(--ease-out);
+}
+
+:where(input, select, textarea):not([data-slot]):focus-visible {
+  outline: none;
+  border-color: var(--color-tss-red);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-tss-red) 18%, transparent);
+}
+
+.btn-ink {
+  background: var(--color-asphalt);
+  color: #fff;
+}
+
+.btn-ink:hover {
+  background: var(--color-asphalt-3);
+}
+
+/* ---------- Surfaces ---------- */
+
+/* Clickable cards lift; static panels stay put. */
+:where(a, article).rounded-2xl.shadow-sm {
+  transition:
+    transform 180ms var(--ease-out),
+    box-shadow 180ms var(--ease-out),
+    border-color 180ms var(--ease-out);
+}
+
+:where(a, article).rounded-2xl.shadow-sm:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--color-stone-300);
+}
+
+:where(a, article).rounded-2xl.shadow-sm:active {
+  transform: translateY(0) scale(0.99);
+}
+
+/* Spotlight that follows the pointer on clickable cards (set by ViewFrame). */
+:where(a, article).rounded-2xl.shadow-sm {
+  background-image: radial-gradient(
+    420px circle at var(--spot-x, -999px) var(--spot-y, -999px),
+    rgb(255 209 0 / 0.07),
+    transparent 45%
+  );
+}
+
+tbody tr {
+  transition: background-color 140ms var(--ease-out);
+}
+
+tbody tr:hover {
+  background-color: var(--color-stone-50);
+}
+
+/* ---------- App frame ---------- */
+
+.rail {
+  width: var(--rail-w);
+  transition: width 220ms var(--ease-out);
+}
+
+.rail-label {
+  transition: opacity 140ms var(--ease-out);
+}
+
+html[data-rail="collapsed"] .rail-label {
+  opacity: 0;
+  pointer-events: none;
+  width: 0;
+  overflow: hidden;
+}
+
+html[data-rail="collapsed"] .rail-hide {
+  display: none;
+}
+
+html:not([data-rail="collapsed"]) .rail-show {
+  display: none;
+}
+
+.rail-tooltip {
+  animation: cmd-fade 120ms var(--ease-out) both;
+}
+
+html[data-rail="collapsed"] .rail .rail-tip {
+  gap: 0;
+  justify-content: center;
+}
+
+html[data-rail="collapsed"] .rail-user {
+  flex-direction: column;
+  gap: 0.5rem;
+  padding-inline: 0;
+}
+
+.topbar {
+  height: var(--topbar-h);
+  background: color-mix(in srgb, #ffffff 86%, transparent);
+  backdrop-filter: saturate(1.4) blur(10px);
+}
+
+.app-sticky {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  transition: box-shadow 200ms var(--ease-out);
+}
+
+@media (min-width: 768px) {
+  .app-sticky {
+    top: var(--topbar-h);
+  }
+}
+
+.mobile-nav,
+.topbar {
+  transition: box-shadow 200ms var(--ease-out);
+}
+
+html[data-scrolled="true"] .app-sticky:not(.sched-sticky),
+html[data-scrolled="true"] .mobile-nav,
+html[data-scrolled="true"] .topbar {
+  box-shadow: 0 10px 18px -16px rgb(21 24 27 / 0.55);
+}
+
+@media (max-width: 767px) {
+  .app-sticky {
+    top: 4rem;
+  }
+}
+
+/* Phone navigation menu */
+.mobile-menu {
+  animation: mobile-menu-in 220ms var(--ease-out);
+}
+.mobile-menu-group {
+  animation: mobile-menu-item 260ms var(--ease-out) both;
+}
+@keyframes mobile-menu-in {
+  from { opacity: 0; transform: translateY(-8px); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes mobile-menu-item {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .mobile-menu,
+  .mobile-menu-group {
+    animation: none;
+  }
+}
+
+/* Lane-line marker beside the current page in the rail. */
+.nav-indicator {
+  position: absolute;
+  z-index: 2;
+  pointer-events: none;
+  border-radius: 2px;
+  background: repeating-linear-gradient(
+    to bottom,
+    var(--color-sheeting) 0 7px,
+    transparent 7px 12px
+  );
+}
+
+.nav-indicator.is-compact {
+  background: repeating-linear-gradient(
+    to right,
+    var(--color-sheeting) 0 9px,
+    transparent 9px 15px
+  );
+}
+
+.nav-indicator.is-ready {
+  transition:
+    transform 240ms var(--ease-out),
+    width 240ms var(--ease-out),
+    height 240ms var(--ease-out);
+}
+
+/* Sign-in brand panel: fine engineering grid that fades out, soft glow behind the logo. */
+.login-grid {
+  background-image:
+    linear-gradient(rgb(255 255 255 / 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(255 255 255 / 0.045) 1px, transparent 1px);
+  background-size: 44px 44px;
+  background-position: center center;
+  mask-image: radial-gradient(ellipse 70% 60% at 50% 45%, #000 20%, transparent 75%);
+}
+
+.login-glow {
+  left: 50%;
+  top: 42%;
+  width: min(46rem, 120%);
+  aspect-ratio: 1;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(circle, rgb(255 209 0 / 0.13) 0%, rgb(225 6 0 / 0.07) 32%, transparent 64%);
+  pointer-events: none;
+}
+
+.login-brand::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 0 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--color-sheeting), transparent);
+  opacity: 0.55;
+}
+
+@media (min-width: 1024px) {
+  .login-brand::after {
+    inset: 0 0 0 auto;
+    width: 2px;
+    height: auto;
+    background: linear-gradient(180deg, transparent, var(--color-sheeting), transparent);
+  }
+}
+
+.login-rise {
+  animation: login-rise 700ms var(--ease-out) both;
+}
+
+@keyframes login-rise {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+}
+
+/* Loading screen shown once after sign-in. Hidden unless the head script turned it on. */
+.splash {
+  display: none;
+}
+
+html[data-splash] .splash {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: var(--color-asphalt);
+  /* Safety net: never block the app if the script that dismisses it fails. */
+  animation: splash-out 520ms var(--ease-out) 6s forwards;
+}
+
+html[data-splash="leaving"] .splash {
+  animation: splash-out 520ms var(--ease-out) forwards;
+}
+
+html[data-splash] {
+  overflow: hidden;
+}
+
+.splash-inner {
+  animation: login-rise 650ms var(--ease-out) both;
+}
+
+html[data-splash="leaving"] .splash-inner {
+  transition: transform 520ms var(--ease-out);
+  transform: scale(1.04);
+}
+
+.splash-track {
+  position: relative;
+  width: 11rem;
+  height: 2px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: rgb(255 255 255 / 0.12);
+}
+
+.splash-fill {
+  position: absolute;
+  inset: 0;
+  transform-origin: left center;
+  background: var(--color-sheeting);
+  box-shadow: 0 0 10px rgb(255 209 0 / 0.8);
+  animation: splash-fill 1.25s cubic-bezier(0.45, 0.05, 0.25, 1) 150ms both;
+}
+
+@keyframes splash-fill {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes splash-out {
+  to {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+  }
+}
+
+/* Page-load bar in TSS yellow, with a bright leading edge. */
+.nav-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  height: 3px;
+  width: 100%;
+  transform-origin: left center;
+  pointer-events: none;
+  background: var(--color-sheeting);
+  box-shadow: 0 0 10px rgb(255 209 0 / 0.7), 0 0 2px rgb(255 209 0 / 0.9);
+}
+
+.nav-progress::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 100%;
+  width: 90px;
+  background: linear-gradient(90deg, transparent, #fff6c2);
+  opacity: 0.9;
+}
+
+/* Command bar */
+.cmd-backdrop {
+  animation: cmd-fade 140ms var(--ease-out) both;
+}
+
+.cmd-panel {
+  animation: cmd-pop 180ms var(--ease-out) both;
+}
+
+@keyframes cmd-fade {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes cmd-pop {
+  from {
+    opacity: 0;
+    transform: translateY(-8px) scale(0.985);
+  }
+}
+
+@layer components {
+  kbd,
+  .kbd {
+    display: inline-flex;
+    min-width: 1.35rem;
+    height: 1.35rem;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.3rem;
+    border: 1px solid var(--color-stone-300);
+    border-bottom-width: 2px;
+    background: #fff;
+    padding: 0 0.3rem;
+    font-family: var(--font-sans);
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: var(--color-stone-600);
+    line-height: 1;
+  }
+}
+
+/* ---------- Motion ---------- */
+
+.view-enter {
+  animation: view-enter 220ms var(--ease-out) both;
+}
+
+@keyframes view-enter {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.rise-arm {
+  opacity: 0;
+  transform: translateY(8px);
+}
+
+.rise-arm.rise-in {
+  animation: rise-in 240ms var(--ease-out) forwards;
+}
+
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.hours-bar-fill {
+  transform-origin: left center;
+  animation: hours-bar-grow 320ms var(--ease-out) both;
+}
+
+@keyframes hours-bar-grow {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+.skeleton-shimmer {
+  background-image: linear-gradient(90deg, #2a3036 0%, #343b42 45%, #2a3036 100%);
+  background-size: 200% 100%;
+  animation: skeleton-shimmer 1.1s ease-in-out infinite;
+}
+
+@keyframes skeleton-shimmer {
+  from {
+    background-position: 100% 0;
+  }
+  to {
+    background-position: -100% 0;
+  }
+}
+
+.login-card {
+  animation: cmd-pop 260ms var(--ease-out) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .rise-arm {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  :where(button, [data-slot="button"]):active,
+  :where(a, article).rounded-2xl.shadow-sm:hover,
+  :where(a, article).rounded-2xl.shadow-sm:active {
+    transform: none;
+  }
+}
+
+/* ---------- Status pills ---------- */
+
+.warn-pill,
+.bad-pill {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 999px;
+  padding: 0 0.5rem;
+  font-size: 0.75rem;
+  line-height: 1.4rem;
+  font-weight: 600;
+}
+
+.warn-pill {
+  border: 1px solid #f3d48a;
+  background: #fffbeb;
+  color: #92400e;
+}
+
+.bad-pill {
+  border: 1px solid #f3c1c4;
+  background: #fef2f2;
+  color: #b01820;
+}
+
+/* ---------- Print ---------- */
+
+@media print {
+  .no-print,
+  .splash,
+  .sched-grid {
+    display: none !important;
+  }
+  .print-only {
+    display: block !important;
+    font: 9pt/1.25 Helvetica, Arial, sans-serif;
+    color: #000;
+  }
+  .print-only h2 {
+    font-size: 14pt;
+    font-weight: 700;
+    margin: 0 0 4pt;
+  }
+  .print-legend span {
+    display: inline-flex;
+    align-items: center;
+    gap: 3pt;
+    margin-right: 10pt;
+  }
+  .print-legend i {
+    display: inline-block;
+    width: 9pt;
+    height: 9pt;
+    border: 0.5pt solid #0003;
+  }
+  .print-only table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 6pt;
+  }
+  .print-only th,
+  .print-only td {
+    border: 0.5pt solid #999;
+    padding: 2pt 4pt;
+    text-align: left;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  .print-only tr {
+    break-inside: avoid;
+  }
+  .print-section td {
+    background: #1f2429 !important;
+    color: #fff;
+    font-weight: 700;
+  }
+  body {
+    background: white !important;
+  }
+  .view-enter,
+  .rise-arm,
+  .rise-in,
+  .hours-bar-fill,
+  .login-card,
+  .login-rise,
+  .skeleton-shimmer {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  :where(a, article).rounded-2xl.shadow-sm {
+    background-image: none !important;
+  }
+}
+
+/* Live Ops Map pins, dots and popups. TSS colors: asphalt, sheeting yellow, TSS red. */
+.ops-pin-wrap { background: transparent; border: 0; }
+.ops-pin { position: relative; display: block; width: 18px; height: 18px; margin: 2px; border-radius: 9999px; border: 2px solid #15181b; box-shadow: 0 0 0 2px rgba(255,255,255,0.9), 0 0 14px 2px currentColor; }
+.ops-ring { position: absolute; inset: -8px; border-radius: 9999px; border: 2px solid currentColor; animation: ops-ping 1.6s ease-out infinite; }
+@keyframes ops-ping { 0% { transform: scale(0.6); opacity: 0.9; } 100% { transform: scale(1.6); opacity: 0; } }
+@media (prefers-reduced-motion: reduce) { .ops-ring { animation: none; opacity: 0.6; } }
+.ops-dot { display: inline-block; width: 10px; height: 10px; border-radius: 9999px; box-shadow: 0 0 8px currentColor; }
+.ops-bg-tailgate { background: #e10600; color: #ff2a1f; }
+.ops-bg-late { background: #ff8c00; color: #ff8c00; }
+.ops-bg-active { background: #ffd100; color: #ffd100; }
+.ops-bg-upcoming { background: #9aa3ad; color: #9aa3ad; }
+.ops-bg-done { background: #22c55e; color: #22c55e; }
+.ops-bg-cancelled { background: #4b5563; color: #4b5563; }
+.ops-c-tailgate { color: #ff6b63; }
+.ops-c-late { color: #ffb14d; }
+.ops-c-active { color: #ffd100; }
+.ops-c-upcoming { color: #d6dbe0; }
+.ops-c-done { color: #86efac; }
+.ops-c-cancelled { color: #9aa3ad; }
+.ops-popup .leaflet-popup-content-wrapper { background: #1f2429; color: #e7e9eb; border: 1px solid rgba(255,209,0,0.45); border-top: 4px solid #ffd100; border-radius: 12px; box-shadow: 0 10px 30px -8px rgba(0,0,0,0.7); }
+.ops-popup .leaflet-popup-tip { background: #1f2429; }
+.ops-popup .leaflet-popup-content { margin: 12px 14px; font: 13px/1.4 var(--font-sans); }
+.ops-popup a.leaflet-popup-close-button { color: #9aa3ad; }
+.ops-pop-status { font-size: 11px; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; }
+.ops-pop-title { margin-top: 2px; font: 800 16px/1.2 var(--font-display); color: #fff; }
+.ops-pop-sub { color: #9aa3ad; font-size: 12px; }
+.ops-pop-row { margin-top: 4px; }
+.ops-pop-wx { margin-top: 6px; color: #ffe066; }
+.ops-pop-flags { margin-top: 6px; display: flex; flex-wrap: wrap; gap: 4px; }
+.ops-pop-flag { background: #e10600; color: #fff; border-radius: 9999px; padding: 1px 8px; font-size: 11px; font-weight: 700; }
+.ops-pop-links { margin-top: 8px; display: flex; gap: 12px; }
+.ops-popup .ops-pop-links a { color: #ffd100; font-weight: 800; text-decoration: underline; }
+.ops-map .leaflet-container { background: #15181b; font-family: var(--font-sans); }
+.ops-map .ops-tiles { filter: invert(1) hue-rotate(180deg) brightness(0.82) contrast(0.95) saturate(0.35) sepia(0.12); }
+
+/* ---------- Delivery portal ---------- */
+
+/* Status pills: one shape, color carries the state. */
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  padding: 0 0.6rem;
+  font-size: 0.75rem;
+  line-height: 1.45rem;
+  font-weight: 650;
+  white-space: nowrap;
+}
+.pill::before {
+  content: "";
+  width: 0.4rem;
+  height: 0.4rem;
+  border-radius: 999px;
+  background: currentColor;
+}
+.pill-ready { background: #fffbeb; border-color: #f6dc8b; color: #8a5a00; }
+.pill-routed { background: #eef0f1; border-color: #d4d9dd; color: #39414a; }
+.pill-out { background: #1f2429; border-color: #1f2429; color: #ffd100; }
+.pill-done { background: #ecfdf3; border-color: #b7ebc9; color: #15803d; }
+.pill-bad { background: #fef2f2; border-color: #f3c1c4; color: #b01820; }
+.pill-muted { background: #f6f7f8; border-color: #e0e3e6; color: #646e78; }
+.pill-red { background: #e10600; border-color: #e10600; color: #fff; }
+
+/* Thin hazard stripe used as an accent rule. */
+.hazard {
+  background: repeating-linear-gradient(135deg, var(--color-sheeting) 0 10px, var(--color-asphalt) 10px 20px);
+}
+
+/* Route progress: road with yellow lane dashes as the fill. */
+.road {
+  position: relative;
+  height: 0.55rem;
+  border-radius: 999px;
+  background: var(--color-stone-200);
+  overflow: hidden;
+}
+.road-fill {
+  position: absolute;
+  inset: 0 auto 0 0;
+  border-radius: 999px;
+  background:
+    repeating-linear-gradient(90deg, var(--color-sheeting) 0 10px, transparent 10px 16px) center / 100% 2px no-repeat,
+    var(--color-asphalt);
+  transition: width 700ms var(--ease-out);
+}
+.road-fill.is-done {
+  background: #15803d;
+}
+
+/* Stop timeline */
+.stop-line {
+  position: absolute;
+  left: 0.95rem;
+  top: 2.2rem;
+  bottom: -0.6rem;
+  width: 2px;
+  background: repeating-linear-gradient(to bottom, var(--color-stone-300) 0 5px, transparent 5px 9px);
+}
+.stop-dot {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.95rem;
+  height: 1.95rem;
+  border-radius: 999px;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 0.85rem;
+  border: 2px solid var(--color-stone-300);
+  background: #fff;
+  color: var(--color-stone-600);
+  flex-shrink: 0;
+}
+.stop-dot.is-delivered { background: #15803d; border-color: #15803d; color: #fff; }
+.stop-dot.is-arrived,
+.stop-dot.is-en-route { background: var(--color-sheeting); border-color: var(--color-asphalt); color: var(--color-asphalt); box-shadow: 0 0 0 4px rgb(255 209 0 / 0.25); }
+.stop-dot.is-exception { background: var(--color-tss-red); border-color: var(--color-tss-red); color: #fff; }
+
+/* Live dot */
+.live-dot {
+  position: relative;
+  display: inline-block;
+  width: 0.55rem;
+  height: 0.55rem;
+  border-radius: 999px;
+  background: #22c55e;
+}
+.live-dot::after {
+  content: "";
+  position: absolute;
+  inset: -4px;
+  border-radius: 999px;
+  border: 2px solid #22c55e;
+  animation: ops-ping 1.8s ease-out infinite;
+}
+
+/* Fleet map truck markers */
+.truck-pin-wrap { background: transparent; border: 0; }
+.truck-pin {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  border: 2px solid #15181b;
+  font: 800 11px/1 var(--font-display);
+  color: #15181b;
+  box-shadow: 0 0 0 2px rgb(255 255 255 / 0.9), 0 6px 16px -4px rgb(0 0 0 / 0.6);
+}
+.truck-pin.is-moving { background: #ffd100; }
+.truck-pin.is-at-stop { background: #22c55e; }
+.truck-pin.is-stopped { background: #ff8c00; }
+.truck-pin.is-yard { background: #c9cfd4; }
+.truck-pin.is-offline { background: #4b5563; color: #e0e3e6; }
+.truck-arrow {
+  position: absolute;
+  top: -9px;
+  left: 50%;
+  width: 0;
+  height: 0;
+  margin-left: -5px;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-bottom: 8px solid #15181b;
+  transform-origin: 5px 26px;
+}
+.stop-pin {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 999px;
+  border: 2px solid #15181b;
+  background: #fff;
+  font: 800 11px/1 var(--font-display);
+  color: #15181b;
+  box-shadow: 0 2px 8px rgb(0 0 0 / 0.45);
+}
+.stop-pin.is-delivered { background: #22c55e; }
+.stop-pin.is-next { background: #ffd100; }
+.yard-pin {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 8px;
+  background: #e10600;
+  border: 2px solid #fff;
+  color: #fff;
+  font: 800 10px/1 var(--font-display);
+  box-shadow: 0 4px 12px rgb(0 0 0 / 0.5);
+}
+
+/* Email preview frame */
+.mail-frame {
+  width: 100%;
+  border: 0;
+  background: #eceeef;
+}
+
+/* Driver phone view */
+.driver-cta {
+  min-height: 3.5rem;
+  font-size: 1.05rem;
+}

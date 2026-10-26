@@ -1,0 +1,15 @@
+# TSS Delivery Portal. Next.js on Netlify (OpenNext adapter applied automatically).
+#
+# Data lives in Netlify Blobs, store "tss-delivery":
+#   orders.json   NetSuite orders, posted by the Grok bot to /api/data-upload
+#   edits.json    route assignments and stop progress from drivers
+#   events.json   driver delivery log
+#   messages.json every text and email sent
+#   photos/*      drop-off photos
+# This app reads NetSuite data only. It never writes back to NetSuite.
+
+[build]
+  command = "npm run build"
+
+[build.environment]
+  NODE_VERSION = "22"
