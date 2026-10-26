@@ -1,4 +1,4 @@
-# TSS Delivery Portal. Next.js on Netlify (OpenNext adapter applied automatically).
+# TSS Delivery Portal. Next.js on Netlify.
 #
 # Data lives in Netlify Blobs, store "tss-delivery":
 #   orders.json   NetSuite orders, posted by the Grok bot to /api/data-upload
@@ -10,6 +10,12 @@
 
 [build]
   command = "npm run build"
+  publish = ".next"
 
 [build.environment]
   NODE_VERSION = "22"
+
+# Declared explicitly: on this site Netlify did not apply the Next.js runtime on its own,
+# so pages were never served (no server handler in the deploy).
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
