@@ -118,6 +118,34 @@ export default async function DashboardPage() {
             </Link>
           </div>
           <ul className="divide-y divide-stone-100 border-t border-stone-100">
+            {todays.length === 0 ? (
+              <li className="px-5 py-6">
+                <p className="text-sm font-semibold text-stone-950">No routes for today yet.</p>
+                <p className="mt-1 text-sm text-stone-500">
+                  {ready.length
+                    ? `${ready.length} orders are packed and not on a truck. Put them on a route from Ready to Ship.`
+                    : "Nothing is waiting to go out."}
+                </p>
+                {ready.length ? (
+                  <ul className="mt-4 divide-y divide-stone-100 rounded-xl border border-stone-200">
+                    {ready.slice(0, 8).map((order) => (
+                      <li key={order.id} className="grid grid-cols-[6.5rem_minmax(0,1fr)_auto] items-baseline gap-3 px-3 py-2 text-sm">
+                        <span className="figure font-bold text-stone-950">{order.number}</span>
+                        <span className="truncate text-stone-700">{order.customer}</span>
+                        <span className="text-stone-500">
+                          {order.city}, {order.state}
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+                ) : null}
+                {ready.length > 8 ? (
+                  <Link href="/orders?status=ready" className="mt-3 inline-block text-sm font-semibold text-stone-600 hover:text-tss-red">
+                    All {ready.length} orders →
+                  </Link>
+                ) : null}
+              </li>
+            ) : null}
             {todays.map((route) => {
               const driver = driverMap.get(route.driverId);
               const truck = truckMap.get(route.truckId);
@@ -221,7 +249,15 @@ export default async function DashboardPage() {
             }
           />
           <div className="mt-5">
-            <EventFeed events={recent} orders={orderMap} drivers={driverMap} routes={routeMap} compact />
+            {recent.length === 0 ? (
+              <p className="rounded-xl border border-dashed border-stone-300 bg-stone-50 px-4 py-8 text-center text-sm text-stone-500">
+                {portal.mode === "live"
+                  ? "No driver updates yet. NetSuite orders are loaded; nothing has left the yard."
+                  : "No driver updates yet."}
+              </p>
+            ) : (
+              <EventFeed events={recent} orders={orderMap} drivers={driverMap} routes={routeMap} compact />
+            )}
           </div>
         </Card>
 
