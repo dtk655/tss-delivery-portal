@@ -4,8 +4,13 @@ import { cookies } from "next/headers";
 const COOKIE = "tss_session";
 const HOURS = 14;
 
+/** True on the live site. Netlify's NETLIFY flag is not always set inside functions, so check production too. */
+function hosted(): boolean {
+  return process.env.NETLIFY === "true" || process.env.NODE_ENV === "production";
+}
+
 export function hostedAuthError(): string | null {
-  if (process.env.NETLIFY !== "true") return null;
+  if (!hosted()) return null;
   const missing = ["APP_PASSWORD", "AUTH_SECRET"].filter((name) => !process.env[name]);
   if (missing.length === 0) return null;
   return `Set ${missing.join(" and ")} in the Netlify site environment before anyone can sign in.`;
@@ -13,13 +18,13 @@ export function hostedAuthError(): string | null {
 
 export function appPassword(): string {
   if (process.env.APP_PASSWORD) return process.env.APP_PASSWORD;
-  if (process.env.NETLIFY === "true") return "";
+  if (hosted()) return "";
   return "tss-director";
 }
 
 function authSecret(): string {
   if (process.env.AUTH_SECRET) return process.env.AUTH_SECRET;
-  if (process.env.NETLIFY === "true") return "";
+  if (hosted()) return "";
   return "local-dev-only-change-before-deploy";
 }
 

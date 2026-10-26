@@ -5,7 +5,7 @@ import { redirect } from "next/navigation";
 import { clearSession, passwordMatches, setSession } from "@/lib/auth";
 
 export async function login(formData: FormData): Promise<void> {
-  if (process.env.NETLIFY === "true" && (!process.env.APP_PASSWORD || !process.env.AUTH_SECRET)) {
+  if ((process.env.NETLIFY === "true" || process.env.NODE_ENV === "production") && (!process.env.APP_PASSWORD || !process.env.AUTH_SECRET)) {
     redirect("/login?error=config");
   }
   const password = String(formData.get("password") ?? "");

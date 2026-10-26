@@ -2,7 +2,9 @@ import { createHmac, timingSafeEqual } from "crypto";
 
 /** Each driver gets a fixed private link: /d/<driverId>.<signature>. No password to remember on a phone. */
 function secret(): string {
-  return process.env.AUTH_SECRET ?? "local-dev-only-change-before-deploy";
+  if (process.env.AUTH_SECRET) return process.env.AUTH_SECRET;
+  if (process.env.NODE_ENV === "production") throw new Error("AUTH_SECRET is not set.");
+  return "local-dev-only-change-before-deploy";
 }
 
 function sign(driverId: string): string {
