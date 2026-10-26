@@ -1,0 +1,660 @@
+{
+ "date": "2026-10-23",
+ "rule": "SO shipmethod=517 TSS Delivery Fleet AND item fulfillment status B Packed; SO status not C/H",
+ "routing": "OSRM public demo (router.project-osrm.org) road distances; durations x1.4 for NJ/NY metro traffic + trucks; 20 min per stop, 15 min load at Hollywood; geocoding US Census (all 9 matched)",
+ "stops": {
+  "RRC": {
+   "key": "RRC",
+   "customers": [
+    "Railroad Construction"
+   ],
+   "sos": [
+    "SO8612"
+   ],
+   "ifs": [
+    "IF7381 (packed 10/23/2026)"
+   ],
+   "items": [
+    "[SO8612] SIGN24x18BKOHIP080A x4",
+    "[SO8612] SIGN48x18BKOHIP080A x10",
+    "[SO8612] SIGN48x18BKOHIP080A x9",
+    "[SO8612] SIGN48x30BKSHIP10MC x7",
+    "[SO8612] SIGN66x30BKSHIP080A x2",
+    "[SO8612] SIGN66x30BKSHIP080A x1",
+    "[SO8612] SIGN36x36BKODGP080A-DETOURAHEAD x8",
+    "[SO8612] SIGN48x30BKSHIP080A x2",
+    "[SO8612] SIGN66x30BKSHIP080A x4",
+    "[SO8612] SIGN66x30BKSHIP080A x1",
+    "[SO8612] SIGN30x30BKSHIP080A x10",
+    "[SO8612] SIGN24x18BKOHIP080A x4",
+    "[SO8612] SIGN66x30BKSHIP080A x2",
+    "[SO8612] SIGN66x30BKSHIP080A x2",
+    "[SO8612] SIGN30x30BKSHIP080A x2",
+    "[SO8612] TYPEIIIBREAKAWAYHIPRIGHT x7",
+    "[SO8612] FLASHERB212-3SRED x14",
+    "[SO8612] BATTERYDCELL x56",
+    "[SO8612] SIGN24x18BKOHIP080A x2",
+    "[SO8612] BRACKETTYPEIIILIGHT x14"
+   ],
+   "ship_from": [
+    "Hadley"
+   ],
+   "memo": [],
+   "notes": [],
+   "address": "Amagansett, 23 Cranberry Hole Rd, Amagansett, NY 11930",
+   "town": "Amagansett, NY",
+   "lat": 40.978725343075,
+   "lon": -72.114037471316
+  },
+  "NJTA": {
+   "key": "NJTA",
+   "customers": [
+    "New Jersey Turnpike Authority"
+   ],
+   "sos": [
+    "SO8886"
+   ],
+   "ifs": [
+    "IF7348 (packed 10/21/2026)"
+   ],
+   "items": [
+    "[SO8886] GRACO25U678 x1",
+    "[SO8886] GRACO25U601 x2"
+   ],
+   "ship_from": [
+    "Hollywood"
+   ],
+   "memo": [
+    "SO8886: PO3617"
+   ],
+   "notes": [
+    "Attn New Jersey Turnpike Authority (NJTA)"
+   ],
+   "address": "Central Services Facility, 950 US Highway 9 North, Tailgate Delivery NJTA IT  PS Operator, Woodbridge, NJ 07095",
+   "town": "Woodbridge, NJ",
+   "lat": 40.538690693426,
+   "lon": -74.294604776372
+  },
+  "JEFCO": {
+   "key": "JEFCO",
+   "customers": [
+    "Jefco Inc"
+   ],
+   "sos": [
+    "SO9021",
+    "SO9079",
+    "SO9080",
+    "SO9123",
+    "SO9133"
+   ],
+   "ifs": [
+    "IF7366 (packed 10/22/2026)",
+    "IF7374 (packed 10/22/2026)",
+    "IF7281 (packed 10/15/2026)",
+    "IF7373 (packed 10/22/2026)",
+    "IF7372 (packed 10/22/2026)"
+   ],
+   "items": [
+    "[SO9021] RU36BO-CUSTOMLEGEND+RIBS x2",
+    "[SO9021] CONESIGNJORANGE-BOEGFLIPARROW x10",
+    "[SO9021] CONESIGNJORANGE-CUSTOMBOEG x5",
+    "[SO9021] CONEP28IN7LBORANGE2REFL x5",
+    "[SO9021] CONESTENCIL x5",
+    "[SO9079] SIGN24x18DPEG080A x4",
+    "[SO9080] SIGNPOSTUCGREEN2LBX8FT x1",
+    "[SO9080] SIGNPOSTUCGREEN2LBX3.5FT x1",
+    "[SO9080] GOLDBARHARDWARESET x1",
+    "[SO9123] SIGN12x18RWEGP080A x1",
+    "[SO9123] SIGNPOSTUCGREEN2LBX8FT x1",
+    "[SO9133] SIGN12x18GBLWEG063A-RESERVEDHANDICAP x6",
+    "[SO9133] SIGNPOSTUCGREEN2LBX12FT x2",
+    "[SO9133] SIGNPOSTCUTCHARGE x2"
+   ],
+   "ship_from": [
+    "Hadley"
+   ],
+   "memo": [],
+   "notes": [],
+   "address": "Jefco Inc, 2 Petunia Dr, Garage #9, North Brunswick, NJ 08902",
+   "town": "North Brunswick, NJ",
+   "lat": 40.437292762017,
+   "lon": -74.521034197414
+  },
+  "PANYNJ": {
+   "key": "PANYNJ",
+   "customers": [
+    "Port Authority Of NY & NJ",
+    "Port Authority Of NY/NJ"
+   ],
+   "sos": [
+    "SO9127",
+    "SO9236",
+    "SO9237",
+    "SO9238"
+   ],
+   "ifs": [
+    "IF7308 (packed 10/19/2026)",
+    "IF7385 (packed 10/23/2026)",
+    "IF7384 (packed 10/23/2026)",
+    "IF7383 (packed 10/23/2026)"
+   ],
+   "items": [
+    "[SO9127] SCORPPART10516 x4",
+    "[SO9236] SCORPPART10550-01 x6",
+    "[SO9237] SCORPPART10400A x2",
+    "[SO9238] SCORPPART11200A x2"
+   ],
+   "ship_from": [
+    "Hollywood"
+   ],
+   "memo": [],
+   "notes": [
+    "Attn Bassim Megaly (201) 386-6825"
+   ],
+   "address": "Port Authority Of NY/NJ, 777 Jersey Avenue, Jersey City, NJ 07310",
+   "town": "Jersey City, NJ",
+   "lat": 40.73110235691,
+   "lon": -74.044606355129
+  },
+  "ENTACT": {
+   "key": "ENTACT",
+   "customers": [
+    "Entact LLC"
+   ],
+   "sos": [
+    "SO9172"
+   ],
+   "ifs": [
+    "IF7382 (packed 10/23/2026)"
+   ],
+   "items": [
+    "[SO9172] WINDMASTER4860K-2 x12",
+    "[SO9172] SIGN48x48BKODGP080A x4",
+    "[SO9172] SIGN48x48BKODGP080A x4",
+    "[SO9172] SIGN48x48BKODGP080A x1",
+    "[SO9172] SIGN48x48BKODGP080A x4",
+    "[SO9172] SIGN48x48BKODGP080A x4"
+   ],
+   "ship_from": [
+    "Hadley"
+   ],
+   "memo": [],
+   "notes": [],
+   "address": "IMTT Plant, 250 East 22nd Street, **Deliver before 2:30PM**, Bayonne, NJ 07002",
+   "town": "Bayonne, NJ",
+   "lat": 40.658816351372,
+   "lon": -74.104850182432
+  },
+  "CREAMER": {
+   "key": "CREAMER",
+   "customers": [
+    "J Fletcher Creamer & Son, Inc."
+   ],
+   "sos": [
+    "SO9225"
+   ],
+   "ifs": [
+    "IF7369 (packed 10/22/2026)"
+   ],
+   "items": [
+    "[SO9225] CRASHGARDFILLED400 x1",
+    "[SO9225] CRASHGARDFILLED700 x1",
+    "[SO9225] CRASHGARDFILLED1400 x7",
+    "[SO9225] CRASHGARDFILLED2100 x2"
+   ],
+   "ship_from": [
+    "Hollywood"
+   ],
+   "memo": [],
+   "notes": [
+    "Attn Ibrahim Janejreh"
+   ],
+   "address": "J Fletcher Creamer & Son, Inc., 1701 East Linden Ave., Linden, NJ 07036",
+   "town": "Linden, NJ",
+   "lat": 40.646705626321,
+   "lon": -74.231835925911
+  },
+  "FORTE": {
+   "key": "FORTE",
+   "customers": [
+    "Forte Construction Corp."
+   ],
+   "sos": [
+    "SO9229"
+   ],
+   "ifs": [
+    "IF7380 (packed 10/22/2026)"
+   ],
+   "items": [
+    "[SO9229] CRASHGARDWITHLIDINSERT x2"
+   ],
+   "ship_from": [
+    "Hadley"
+   ],
+   "memo": [],
+   "notes": [],
+   "address": "Babylon, 122 N Carll Avenue, Babylon, NY 11702",
+   "town": "Babylon, NY",
+   "lat": 40.70072031578,
+   "lon": -73.32594745729
+  }
+ },
+ "plans": {
+  "juan_pickup": {
+   "vehicle": "Juan - pickup truck",
+   "start": "7:00 AM",
+   "stops": [
+    {
+     "stop": "Load at Hollywood yard",
+     "address": "448 Hollywood Ave, South Plainfield, NJ 07080",
+     "eta": "7:04 AM",
+     "leg_mi": 1.2,
+     "dwell_min": 15
+    },
+    {
+     "stop": "PANYNJ",
+     "customers": [
+      "Port Authority Of NY & NJ",
+      "Port Authority Of NY/NJ"
+     ],
+     "sos": [
+      "SO9127",
+      "SO9236",
+      "SO9237",
+      "SO9238"
+     ],
+     "fulfillments": [
+      "IF7308 (packed 10/19/2026)",
+      "IF7385 (packed 10/23/2026)",
+      "IF7384 (packed 10/23/2026)",
+      "IF7383 (packed 10/23/2026)"
+     ],
+     "items": [
+      "[SO9127] SCORPPART10516 x4",
+      "[SO9236] SCORPPART10550-01 x6",
+      "[SO9237] SCORPPART10400A x2",
+      "[SO9238] SCORPPART11200A x2"
+     ],
+     "address": "Port Authority Of NY/NJ, 777 Jersey Avenue, Jersey City, NJ 07310",
+     "town": "Jersey City, NJ",
+     "ship_from": [
+      "Hollywood"
+     ],
+     "memo": [],
+     "notes": [
+      "Attn Bassim Megaly (201) 386-6825"
+     ],
+     "eta": "8:22 AM",
+     "leg_mi": 30.8,
+     "dwell_min": 20
+    },
+    {
+     "stop": "ENTACT",
+     "customers": [
+      "Entact LLC"
+     ],
+     "sos": [
+      "SO9172"
+     ],
+     "fulfillments": [
+      "IF7382 (packed 10/23/2026)"
+     ],
+     "items": [
+      "[SO9172] WINDMASTER4860K-2 x12",
+      "[SO9172] SIGN48x48BKODGP080A x4",
+      "[SO9172] SIGN48x48BKODGP080A x4",
+      "[SO9172] SIGN48x48BKODGP080A x1",
+      "[SO9172] SIGN48x48BKODGP080A x4",
+      "[SO9172] SIGN48x48BKODGP080A x4"
+     ],
+     "address": "IMTT Plant, 250 East 22nd Street, **Deliver before 2:30PM**, Bayonne, NJ 07002",
+     "town": "Bayonne, NJ",
+     "ship_from": [
+      "Hadley"
+     ],
+     "memo": [],
+     "notes": [],
+     "eta": "9:01 AM",
+     "leg_mi": 8.0,
+     "dwell_min": 20
+    },
+    {
+     "stop": "JEFCO",
+     "customers": [
+      "Jefco Inc"
+     ],
+     "sos": [
+      "SO9021",
+      "SO9079",
+      "SO9080",
+      "SO9123",
+      "SO9133"
+     ],
+     "fulfillments": [
+      "IF7366 (packed 10/22/2026)",
+      "IF7374 (packed 10/22/2026)",
+      "IF7281 (packed 10/15/2026)",
+      "IF7373 (packed 10/22/2026)",
+      "IF7372 (packed 10/22/2026)"
+     ],
+     "items": [
+      "[SO9021] RU36BO-CUSTOMLEGEND+RIBS x2",
+      "[SO9021] CONESIGNJORANGE-BOEGFLIPARROW x10",
+      "[SO9021] CONESIGNJORANGE-CUSTOMBOEG x5",
+      "[SO9021] CONEP28IN7LBORANGE2REFL x5",
+      "[SO9021] CONESTENCIL x5",
+      "[SO9079] SIGN24x18DPEG080A x4",
+      "[SO9080] SIGNPOSTUCGREEN2LBX8FT x1",
+      "[SO9080] SIGNPOSTUCGREEN2LBX3.5FT x1",
+      "[SO9080] GOLDBARHARDWARESET x1",
+      "[SO9123] SIGN12x18RWEGP080A x1",
+      "[SO9123] SIGNPOSTUCGREEN2LBX8FT x1",
+      "[SO9133] SIGN12x18GBLWEG063A-RESERVEDHANDICAP x6",
+      "[SO9133] SIGNPOSTUCGREEN2LBX12FT x2",
+      "[SO9133] SIGNPOSTCUTCHARGE x2"
+     ],
+     "address": "Jefco Inc, 2 Petunia Dr, Garage #9, North Brunswick, NJ 08902",
+     "town": "North Brunswick, NJ",
+     "ship_from": [
+      "Hadley"
+     ],
+     "memo": [],
+     "notes": [],
+     "eta": "10:28 AM",
+     "leg_mi": 32.8,
+     "dwell_min": 20
+    },
+    {
+     "stop": "Return to depot",
+     "address": "601 Hadley Rd, South Plainfield, NJ 07080",
+     "eta": "11:22 AM",
+     "leg_mi": 13.4
+    }
+   ],
+   "total_mi": 86.3,
+   "drive_min": 188,
+   "total_hr": 4.38,
+   "back_at": "11:22 AM",
+   "maps": "https://www.google.com/maps/dir/601+Hadley+Rd%2C+South+Plainfield%2C+NJ+07080/448+Hollywood+Ave%2C+South+Plainfield%2C+NJ+07080/777+Jersey+Ave%2C+Jersey+City%2C+NJ+07310/250+East+22nd+Street%2C+Bayonne%2C+NJ+07002/2+Petunia+Dr%2C+North+Brunswick%2C+NJ+08902/601+Hadley+Rd%2C+South+Plainfield%2C+NJ+07080"
+  },
+  "box_511": {
+   "vehicle": "Box truck 511 (Roger/Timmy)",
+   "start": "7:00 AM",
+   "stops": [
+    {
+     "stop": "Load at Hollywood yard",
+     "address": "448 Hollywood Ave, South Plainfield, NJ 07080",
+     "eta": "7:04 AM",
+     "leg_mi": 1.2,
+     "dwell_min": 15
+    },
+    {
+     "stop": "NJTA",
+     "customers": [
+      "New Jersey Turnpike Authority"
+     ],
+     "sos": [
+      "SO8886"
+     ],
+     "fulfillments": [
+      "IF7348 (packed 10/21/2026)"
+     ],
+     "items": [
+      "[SO8886] GRACO25U678 x1",
+      "[SO8886] GRACO25U601 x2"
+     ],
+     "address": "Central Services Facility, 950 US Highway 9 North, Tailgate Delivery NJTA IT  PS Operator, Woodbridge, NJ 07095",
+     "town": "Woodbridge, NJ",
+     "ship_from": [
+      "Hollywood"
+     ],
+     "memo": [
+      "SO8886: PO3617"
+     ],
+     "notes": [
+      "Attn New Jersey Turnpike Authority (NJTA)"
+     ],
+     "eta": "7:40 AM",
+     "leg_mi": 9.6,
+     "dwell_min": 20
+    },
+    {
+     "stop": "CREAMER",
+     "customers": [
+      "J Fletcher Creamer & Son, Inc."
+     ],
+     "sos": [
+      "SO9225"
+     ],
+     "fulfillments": [
+      "IF7369 (packed 10/22/2026)"
+     ],
+     "items": [
+      "[SO9225] CRASHGARDFILLED400 x1",
+      "[SO9225] CRASHGARDFILLED700 x1",
+      "[SO9225] CRASHGARDFILLED1400 x7",
+      "[SO9225] CRASHGARDFILLED2100 x2"
+     ],
+     "address": "J Fletcher Creamer & Son, Inc., 1701 East Linden Ave., Linden, NJ 07036",
+     "town": "Linden, NJ",
+     "ship_from": [
+      "Hollywood"
+     ],
+     "memo": [],
+     "notes": [
+      "Attn Ibrahim Janejreh"
+     ],
+     "eta": "8:22 AM",
+     "leg_mi": 9.0,
+     "dwell_min": 20
+    },
+    {
+     "stop": "Return to depot",
+     "address": "601 Hadley Rd, South Plainfield, NJ 07080",
+     "eta": "9:17 AM",
+     "leg_mi": 15.0
+    }
+   ],
+   "total_mi": 34.9,
+   "drive_min": 82,
+   "total_hr": 2.28,
+   "back_at": "9:17 AM",
+   "maps": "https://www.google.com/maps/dir/601+Hadley+Rd%2C+South+Plainfield%2C+NJ+07080/448+Hollywood+Ave%2C+South+Plainfield%2C+NJ+07080/950+US+Highway+9+North%2C+Woodbridge%2C+NJ+07095/1701+East+Linden+Ave%2C+Linden%2C+NJ+07036/601+Hadley+Rd%2C+South+Plainfield%2C+NJ+07080"
+  },
+  "box_511_plus_babylon": {
+   "vehicle": "Box truck 511 incl. Babylon",
+   "start": "7:00 AM",
+   "stops": [
+    {
+     "stop": "Load at Hollywood yard",
+     "address": "448 Hollywood Ave, South Plainfield, NJ 07080",
+     "eta": "7:04 AM",
+     "leg_mi": 1.2,
+     "dwell_min": 15
+    },
+    {
+     "stop": "NJTA",
+     "customers": [
+      "New Jersey Turnpike Authority"
+     ],
+     "sos": [
+      "SO8886"
+     ],
+     "fulfillments": [
+      "IF7348 (packed 10/21/2026)"
+     ],
+     "items": [
+      "[SO8886] GRACO25U678 x1",
+      "[SO8886] GRACO25U601 x2"
+     ],
+     "address": "Central Services Facility, 950 US Highway 9 North, Tailgate Delivery NJTA IT  PS Operator, Woodbridge, NJ 07095",
+     "town": "Woodbridge, NJ",
+     "ship_from": [
+      "Hollywood"
+     ],
+     "memo": [
+      "SO8886: PO3617"
+     ],
+     "notes": [
+      "Attn New Jersey Turnpike Authority (NJTA)"
+     ],
+     "eta": "7:40 AM",
+     "leg_mi": 9.6,
+     "dwell_min": 20
+    },
+    {
+     "stop": "CREAMER",
+     "customers": [
+      "J Fletcher Creamer & Son, Inc."
+     ],
+     "sos": [
+      "SO9225"
+     ],
+     "fulfillments": [
+      "IF7369 (packed 10/22/2026)"
+     ],
+     "items": [
+      "[SO9225] CRASHGARDFILLED400 x1",
+      "[SO9225] CRASHGARDFILLED700 x1",
+      "[SO9225] CRASHGARDFILLED1400 x7",
+      "[SO9225] CRASHGARDFILLED2100 x2"
+     ],
+     "address": "J Fletcher Creamer & Son, Inc., 1701 East Linden Ave., Linden, NJ 07036",
+     "town": "Linden, NJ",
+     "ship_from": [
+      "Hollywood"
+     ],
+     "memo": [],
+     "notes": [
+      "Attn Ibrahim Janejreh"
+     ],
+     "eta": "8:22 AM",
+     "leg_mi": 9.0,
+     "dwell_min": 20
+    },
+    {
+     "stop": "FORTE",
+     "customers": [
+      "Forte Construction Corp."
+     ],
+     "sos": [
+      "SO9229"
+     ],
+     "fulfillments": [
+      "IF7380 (packed 10/22/2026)"
+     ],
+     "items": [
+      "[SO9229] CRASHGARDWITHLIDINSERT x2"
+     ],
+     "address": "Babylon, 122 N Carll Avenue, Babylon, NY 11702",
+     "town": "Babylon, NY",
+     "ship_from": [
+      "Hadley"
+     ],
+     "memo": [],
+     "notes": [],
+     "eta": "10:41 AM",
+     "leg_mi": 55.8,
+     "dwell_min": 20
+    },
+    {
+     "stop": "Return to depot",
+     "address": "601 Hadley Rd, South Plainfield, NJ 07080",
+     "eta": "1:27 PM",
+     "leg_mi": 70.9
+    }
+   ],
+   "total_mi": 146.5,
+   "drive_min": 313,
+   "total_hr": 6.46,
+   "back_at": "1:27 PM",
+   "maps": "https://www.google.com/maps/dir/601+Hadley+Rd%2C+South+Plainfield%2C+NJ+07080/448+Hollywood+Ave%2C+South+Plainfield%2C+NJ+07080/950+US+Highway+9+North%2C+Woodbridge%2C+NJ+07095/1701+East+Linden+Ave%2C+Linden%2C+NJ+07036/122+N+Carll+Ave%2C+Babylon%2C+NY+11702/601+Hadley+Rd%2C+South+Plainfield%2C+NJ+07080"
+  },
+  "long_island_run_option": {
+   "vehicle": "Long Island run (Babylon + Amagansett)",
+   "start": "7:00 AM",
+   "stops": [
+    {
+     "stop": "FORTE",
+     "customers": [
+      "Forte Construction Corp."
+     ],
+     "sos": [
+      "SO9229"
+     ],
+     "fulfillments": [
+      "IF7380 (packed 10/22/2026)"
+     ],
+     "items": [
+      "[SO9229] CRASHGARDWITHLIDINSERT x2"
+     ],
+     "address": "Babylon, 122 N Carll Avenue, Babylon, NY 11702",
+     "town": "Babylon, NY",
+     "ship_from": [
+      "Hadley"
+     ],
+     "memo": [],
+     "notes": [],
+     "eta": "9:24 AM",
+     "leg_mi": 70.9,
+     "dwell_min": 20
+    },
+    {
+     "stop": "RRC",
+     "customers": [
+      "Railroad Construction"
+     ],
+     "sos": [
+      "SO8612"
+     ],
+     "fulfillments": [
+      "IF7381 (packed 10/23/2026)"
+     ],
+     "items": [
+      "[SO8612] SIGN24x18BKOHIP080A x4",
+      "[SO8612] SIGN48x18BKOHIP080A x10",
+      "[SO8612] SIGN48x18BKOHIP080A x9",
+      "[SO8612] SIGN48x30BKSHIP10MC x7",
+      "[SO8612] SIGN66x30BKSHIP080A x2",
+      "[SO8612] SIGN66x30BKSHIP080A x1",
+      "[SO8612] SIGN36x36BKODGP080A-DETOURAHEAD x8",
+      "[SO8612] SIGN48x30BKSHIP080A x2",
+      "[SO8612] SIGN66x30BKSHIP080A x4",
+      "[SO8612] SIGN66x30BKSHIP080A x1",
+      "[SO8612] SIGN30x30BKSHIP080A x10",
+      "[SO8612] SIGN24x18BKOHIP080A x4",
+      "[SO8612] SIGN66x30BKSHIP080A x2",
+      "[SO8612] SIGN66x30BKSHIP080A x2",
+      "[SO8612] SIGN30x30BKSHIP080A x2",
+      "[SO8612] TYPEIIIBREAKAWAYHIPRIGHT x7",
+      "[SO8612] FLASHERB212-3SRED x14",
+      "[SO8612] BATTERYDCELL x56",
+      "[SO8612] SIGN24x18BKOHIP080A x2",
+      "[SO8612] BRACKETTYPEIIILIGHT x14"
+     ],
+     "address": "Amagansett, 23 Cranberry Hole Rd, Amagansett, NY 11930",
+     "town": "Amagansett, NY",
+     "ship_from": [
+      "Hadley"
+     ],
+     "memo": [],
+     "notes": [],
+     "eta": "12:18 PM",
+     "leg_mi": 69.3,
+     "dwell_min": 20
+    },
+    {
+     "stop": "Return to depot",
+     "address": "601 Hadley Rd, South Plainfield, NJ 07080",
+     "eta": "5:30 PM",
+     "leg_mi": 138.5
+    }
+   ],
+   "total_mi": 278.6,
+   "drive_min": 590,
+   "total_hr": 10.51,
+   "back_at": "5:30 PM",
+   "maps": "https://www.google.com/maps/dir/601+Hadley+Rd%2C+South+Plainfield%2C+NJ+07080/122+N+Carll+Ave%2C+Babylon%2C+NY+11702/23+Cranberry+Hole+Rd%2C+Amagansett%2C+NY+11930/601+Hadley+Rd%2C+South+Plainfield%2C+NJ+07080"
+  }
+ }
+}

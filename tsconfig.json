@@ -1,0 +1,11 @@
+{
+  "extends": "astro/tsconfigs/strict",
+  "compilerOptions": {
+    "jsx": "react-jsx",
+    "resolveJsonModule": true,
+    "noEmit": true,
+    "types": ["astro/client", "node"]
+  },
+  "include": ["src/**/*.ts", "src/**/*.tsx", "netlify/**/*.ts", "tests/**/*.ts", "astro.config.mjs", "vitest.config.ts"],
+  "exclude": ["dist", "node_modules"]
+}
