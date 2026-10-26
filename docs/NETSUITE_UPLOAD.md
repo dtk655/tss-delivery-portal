@@ -62,3 +62,8 @@ Each upload replaces the previous order list, so send every open order that is p
 was missing an id, ship date, or coordinates.
 
 Once the first upload lands, the portal switches from sample data to live data automatically.
+The same site-wide Netlify Blobs store (`tss-delivery`, key `orders.json`) is what the pages
+read on each load. `{ "ok": true }` means that snapshot was saved. Refresh the dashboard: the
+badge should say “NetSuite synced”, Ready to ship should equal `orders`, and Ready to Ship
+should list every order in the body. No extra Blobs environment variables are required.
+`DATA_UPLOAD_SECRET` must still match the `x-upload-secret` header.

@@ -25,7 +25,10 @@ emailed a branded delivery notice (with the photos).
 
 - **NetSuite** (read only): the Grok bot posts orders to `/api/data-upload`. See
   [docs/NETSUITE_UPLOAD.md](docs/NETSUITE_UPLOAD.md). Until the first upload, every page shows
-  clearly labeled sample data.
+  clearly labeled sample data. The snapshot lives in Netlify Blobs (store `tss-delivery`).
+  Pages and the upload route open that same store; no extra Blobs token or `DATABASE_URL` is
+  required. After a deploy, reload the dashboard. Post the orders again only if the badge
+  still says “Sample data”.
 - **Fleetio**: truck list and GPS from the Fleetio API (`FLEETIO_API_KEY`, `FLEETIO_ACCOUNT_TOKEN`).
 - **Twilio**: driver route texts. **SMTP (Outlook)**: customer and company emails.
 - Everything the portal writes (route edits, driver log, photos, outbox) is in Netlify Blobs.

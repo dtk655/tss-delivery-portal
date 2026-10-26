@@ -139,7 +139,11 @@ export function OrdersBoard({
               {shown.length === 0 ? (
                 <tr>
                   <td colSpan={7} className="px-5 py-14 text-center text-sm text-stone-500">
-                    {tab === "ready" ? "Every order is on a route. Nice work." : "No orders match these filters."}
+                    {counts.all === 0
+                      ? "No orders in the latest upload."
+                      : tab === "ready"
+                        ? "Every order is on a route. Nice work."
+                        : "No orders match these filters."}
                   </td>
                 </tr>
               ) : null}

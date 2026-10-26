@@ -3,23 +3,24 @@
  * Set FLEETIO_API_KEY and FLEETIO_ACCOUNT_TOKEN in Netlify. Without them the portal shows sample trucks.
  * Docs: https://developer.fleetio.com/docs/overview/quick-start
  */
+import { runtimeFetch } from "@/lib/runtime-fetch";
 import type { Truck, TruckStatus } from "@/lib/types";
 
 const BASE = "https://secure.fleetio.com/api/v1";
+/** Stop asking Fleetio once this budget is spent so GPS cannot blank the order board. */
+const BUDGET_MS = 8_000;
 
 export function fleetioConfigured(): boolean {
   return Boolean(process.env.FLEETIO_API_KEY && process.env.FLEETIO_ACCOUNT_TOKEN);
 }
 
 async function get<T>(pathname: string): Promise<T> {
-  const response = await fetch(`${BASE}${pathname}`, {
+  const response = await runtimeFetch(`${BASE}${pathname}`, {
     headers: {
       Authorization: `Token ${process.env.FLEETIO_API_KEY}`,
       "Account-Token": String(process.env.FLEETIO_ACCOUNT_TOKEN),
       Accept: "application/json",
     },
-    cache: "no-store",
-    signal: AbortSignal.timeout(12_000),
   });
   if (!response.ok) throw new Error(`Fleetio ${pathname} answered ${response.status}`);
   return (await response.json()) as T;
@@ -62,9 +63,11 @@ function statusFrom(ping: string, moved: boolean): TruckStatus {
  */
 export async function liveTrucks(known: Truck[]): Promise<Truck[]> {
   if (!fleetioConfigured()) return known;
+  const deadline = Date.now() + BUDGET_MS;
   const vehicles = rows<FleetioVehicle>(await get("/vehicles?per_page=100"));
   const out: Truck[] = [];
   for (const vehicle of vehicles) {
+    if (Date.now() > deadline) break;
     const match =
       known.find((t) => t.fleetioId === String(vehicle.id)) ??
       known.find((t) => t.unit.toLowerCase() === vehicle.name.toLowerCase());
